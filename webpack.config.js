@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 
 
 module.exports = {
-  entry: './src/user.js',
+  entry: './src/main.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -18,12 +18,12 @@ module.exports = {
   plugins: [
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(),
+    new Dotenv(),
     new HtmlWebpackPlugin({
       title: '',
       template: './src/index.html',
       inject: 'body'
-    }),
-    new Dotenv()
+    })
 
   ],
   module: {
