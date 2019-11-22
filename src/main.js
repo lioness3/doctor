@@ -9,11 +9,12 @@ import './styles.css';
 $(document).ready(function(){
   $("#symptomButton").click(function(event){
     event.preventDefault;
+
     const userSymptom = $("#symptom").val();
     $("#symptom").val('');
     (async () => {
               let doctor = new DoctorName();
-              const nameResponse = await doctor.getName(userSymptom,"262c57b8c7d02a5e7fab8baba2a526b4");
+              const nameResponse = await doctor.getName(userSymptom);
               getPath(nameResponse);
             })();
             function getPath(nameResponse) {
