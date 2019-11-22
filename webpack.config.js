@@ -6,7 +6,7 @@ const Dotenv = require('dotenv-webpack');
 
 
 module.exports = {
-  entry: './src/main.js',
+  entry: './src/user.js',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist')
@@ -19,7 +19,7 @@ module.exports = {
     new UglifyJsPlugin({ sourceMap: true }),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Ping Pong',
+      title: '',
       template: './src/index.html',
       inject: 'body'
     }),
