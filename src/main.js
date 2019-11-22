@@ -9,9 +9,10 @@ import './styles.css';
 $(document).ready(function(){
   $("#symptomButton").click(function(event){
     event.preventDefault;
-
     const userSymptom = $("#symptom").val();
+    const docName = $("#name").val();
     $("#symptom").val('');
+    $("#name").val('');
     (async () => {
               let doctor = new DoctorName();
               const nameResponse = await doctor.getName(userSymptom);
