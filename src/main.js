@@ -15,12 +15,12 @@ $(document).ready(function(){
     $("#name").val('');
     (async () => {
               let doctor = new DoctorName();
-              const nameResponse = await doctor.getName(userSymptom);
+              const nameResponse = await doctor.getName(docName, userSymptom);
               getPath(nameResponse);
             })();
             function getPath(nameResponse) {
             $("#showDoctor").text(`Here is a list of doctors in the Portland area:
-               ${nameResponse.data[0].practices[0].name}`);
+               ${nameResponse.data[0].practices[0]}`);
                console.log(nameResponse);
 
           }
