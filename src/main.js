@@ -19,7 +19,7 @@ $(document).ready(function(){
             })();
             function getPath(nameResponse) {
             $("#showDoctor").text(`Here is a list of doctors in the Portland area:
-               ${nameResponse.data[0].practices}`);
+               ${nameResponse.data[0].practices[0].name}`);
                console.log(nameResponse);
 
           }
