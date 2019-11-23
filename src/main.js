@@ -4,7 +4,9 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
-// let API_KEY = []
+// If the query response includes any doctors, the following information should be included about each doctor: first name, last name, address, phone number, website and whether or not the doctor is accepting new patients (the API provides this data).
+// If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
+// If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)
 
 $(document).ready(function(){
   $("#symptomButton").click(function(event){
@@ -20,14 +22,18 @@ $(document).ready(function(){
               getPath(nameResponse);
             })();
             function getPath(nameResponse) {
+              if(this.value=== true){
               // let arr = [];
               // for(var i = 0; i < nameResponse.length; i ++){
               //   arr.push(`${nameResponse.data[0].practices[i].name}`);
               // }
               // $("#showDoctor").text(`Here is a list of doctors in the Portland area:
               //    `);
-                 console.log(`${nameResponse.data[0].practices[0].name}`);
+                 console.log(`${nameResponse.data[0].practices[0]}`);
 
+          }else {
+            $("#showDoctor").text('No doctors meet this criteria.')
           }
+        }
   });
 });
