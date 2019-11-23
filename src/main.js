@@ -10,22 +10,23 @@ $(document).ready(function(){
   $("#symptomButton").click(function(event){
     event.preventDefault;
     const userSymptom = $("#symptom").val();
-    const docName = $("#name").val();
+    // const docName = $("#name").val();
+    // $("#name").val('');
     $("#symptom").val('');
-    $("#name").val('');
     (async () => {
               let doctor = new DoctorName();
-              const nameResponse = await doctor.getName(docName, userSymptom);
+              const nameResponse = await doctor.getName(userSymptom);
+              // const nameResponse = await doctor.getName(docName, userSymptom);
               getPath(nameResponse);
             })();
             function getPath(nameResponse) {
-              let arr = [];
-              for(var i = 0; i < nameResponse.length; i ++){
-                arr.push(`${nameResponse.data[0].practices[i]}`);
-              }
-              $("#showDoctor").text(`Here is a list of doctors in the Portland area:
-                 `+ arr);
-               console.log(arr);
+              // let arr = [];
+              // for(var i = 0; i < nameResponse.length; i ++){
+              //   arr.push(`${nameResponse.data[0].practices[i].name}`);
+              // }
+              // $("#showDoctor").text(`Here is a list of doctors in the Portland area:
+              //    `);
+                 console.log(`${nameResponse.data[0].practices[0].name}`);
 
           }
   });
