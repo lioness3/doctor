@@ -26,8 +26,8 @@ $(document).ready(function(){
 
       console.log(nameResponse.data[0].profile);
         let info =[];
-      let gatheredInfo = nameResponse.data.map(info => info.profile);
-          $('#showDoctor').text(gatheredInfo);
+const gatheredName = nameResponse.data.map(info => `${info.profile.first_name}${info.profile.last_name}`);
+          $('#showDoctor').text(gatheredName);
 
       //console.log(element.profile))
       // if(result.match("name"){
