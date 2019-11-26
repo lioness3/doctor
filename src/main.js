@@ -27,27 +27,21 @@ $(document).ready(function(){
     function getPath(nameResponse) {
 
       console.log(nameResponse);
+      //append
 
       for (var i = 0; i < nameResponse.data.length; i++) {
+        nameResponse.data[i].profile.first_name;
+        nameResponse.data[i].profile.last_name;
         for (var j = 0; j < nameResponse.data[i].practices.length; j++) {
-          nameResponse.data[i].profile.first_name;
-          nameResponse.data[i].profile.last_name;
           nameResponse.data[i].practices[j].phones[0].number;
           nameResponse.data[i].practices[j].accepts_new_patients;
           nameResponse.data[i].practices[j].website;
-          nameResponse.data[i].practices[j].visit_address.street;
-          nameResponse.data[i].practices[j].visit_address.state;
-          nameResponse.data[i].practices[j].visit_address.zip;
+          $('#list').append(`${nameResponse.data[i].practices[j].visit_address.street}
+          ${nameResponse.data[i].practices[j].visit_address.state}
+          ${nameResponse.data[i].practices[j].visit_address.zip}`);
         }
       }
-      let fullName =   `${nameResponse.data[i].profile.first_name}${nameResponse.data[i].profile.last_name}`;
-
-        let number = nameResponse.data[i].practices[j].phones[0].number;
-        let accepting =  nameResponse.data[i].practices[j].accepts_new_patients;
-        let website = nameResponse.data[i].practices[j].website;
-        let address = `${nameResponse.data[i].practices[j].visit_address.street},${nameResponse.data[i].practices[j].visit_address.street2},${nameResponse.data[i].practices[j].visit_address.city},${nameResponse.data[i].practices[j].visit_address.state}  ${nameResponse.data[i].practices[j].visit_address.zip}`;
-
-
+  
     }
 
 
