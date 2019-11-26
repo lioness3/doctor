@@ -25,15 +25,15 @@ $(document).ready(function(){
     function getPath(nameResponse) {
 
       console.log(nameResponse.data[0].profile);
-      nameResponse.data.map(info => info.profile));
-      console.log(info);
+        let info =[];
+      let gatheredInfo = nameResponse.data.map(info => info.profile);
+          $('#showDoctor').text(gatheredInfo);
+
       //console.log(element.profile))
       // if(result.match("name"){
-      //   let info =[];
 
       //   result.forEach(function(){
       //     console.log(result);
-      //     $('#showDoctor').text(`${result.practices}`);
       //   });
       // }else{
       //   console.log("hi");
