@@ -22,25 +22,29 @@ $(document).ready(function(){
       getPath(nameResponse);
     })();
 
+
+
     function getPath(nameResponse) {
 
-      console.log(nameResponse.data[0].profile);
-        let info =[];
-const gatheredName = nameResponse.data.map(info => `${info.profile.first_name}${info.profile.last_name}`);
-          $('#showDoctor').text(gatheredName);
+      console.log(nameResponse);
 
-      //console.log(element.profile))
-      // if(result.match("name"){
+      for (var i = 0; i < nameResponse.data.length; i++) {
+        for (var j = 0; j < nameResponse.data[i].practices.length; j++) {
+          console.log(nameResponse.data[i].profile.first_name);
+          console.log(nameResponse.data[i].profile.last_name);
+          console.log(nameResponse.data[i].practices[j].phones[0].number);
+          console.log(nameResponse.data[i].practices[j].accepts_new_patients);
+          console.log(nameResponse.data[i].practices[j].website);
+          console.log(nameResponse.data[i].practices[j].visit_address.street);
+          console.log(nameResponse.data[i].practices[j].visit_address.state);
+          console.log(nameResponse.data[i].practices[j].visit_address.zip);
+        
+        }
+      }
 
-      //   result.forEach(function(){
-      //     console.log(result);
-      //   });
-      // }else{
-      //   console.log("hi");
-      // }
     }
 
 
-    });
   });
+});
 // If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
