@@ -15,32 +15,31 @@ $(document).ready(function(){
     $("#name").val('');
     $("#symptom").val('');
     // make button only clickable when something is enetered
+
     (async () => {
       const doctor = new DoctorName();
-      // const nameResponse = await doctor.getName(userSymptom);
       const nameResponse = await doctor.getName(docName, userSymptom);
       getPath(nameResponse);
     })();
-     function getPath(nameResponse) {
-     const result = response.data
-      if(doctors.length > 0){
-        let arr = [];
-        for(var i = 0; i < nameResponse.length; i ++){
-            arr.push(`${nameResponse.data[0].practices[i].name}`);
-          }
-          console.log(arr);
-          $("#showDoctor").text(`Here is a list of doctors in the Portland area:
-              ${nameResponse.data[0].profile} `);
 
+    function getPath(nameResponse) {
 
-          }else {
-            $("#showDoctor").text('No doctors meet this criteria.')
-          }
- console.log(nameResponse);
-        }
-        nameResponse.data.forEach(doctor){
+      console.log(nameResponse.data[0].profile);
+      nameResponse.data.map(info => info.profile));
+      console.log(info);
+      //console.log(element.profile))
+      // if(result.match("name"){
+      //   let info =[];
 
-        };
+      //   result.forEach(function(){
+      //     console.log(result);
+      //     $('#showDoctor').text(`${result.practices}`);
+      //   });
+      // }else{
+      //   console.log("hi");
+      // }
+    }
+
 
     });
   });
