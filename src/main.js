@@ -28,28 +28,34 @@ $(document).ready(function(){
 
       let displayIt = [];
       let nameData = nameResponse.data;
+      console.log(nameResponse);
+
   //searches data object for "profile"
       for (var i = 0; i < nameData.length; i++) {
   //adds list item containing first and last name
-        displayIt+= `<li>${nameData[i].profile.first_name}   ${nameData[i].profile.last_name}</li>`
 
         let deeperData = nameData[i].practices;
   //searches data object for "practices"
+  displayIt+= `<li>${nameData[0].profile.first_name}  ${nameData[0].profile.last_name}</li>`
         for (var j = 0; j < deeperData.length; j++) {
-
-          console.log(deeperData[j].phones[0].number[0]);
-  //adds list item of phone number and address
           displayIt+= `<li>${deeperData[j].phones[0].number}<li>`
-          displayIt+= `<li>${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city}${deeperData[j].visit_address.state}${deeperData[j].visit_address.zip}</li>`
+
+          if ((`${deeperData[0].accepts_new_patients}`) === true){
+            displayIt += '<li>This doctor is currently accepting new patients.</li>'
+          }else{
+            displayIt +='<li>This doctor is NOT accepting new patients.</li>'
+          }
+          displayIt+= `<li>${deeperData[j].visit_address.street}</li>`
+
+         if ((deeperData[j].visit_address.street2)!=undefined){
+           displayIt += `<li>${deeperData[j].visit_address.street2}</li>`
+         }
+           displayIt += `<li>${deeperData[j].visit_address.city},${deeperData[j].visit_address.state}</li>`
+           displayIt += `<li>${deeperData[j].visit_address.zip}</li>`
 
   //displays message depending on acceptance of new patients
-          if ((`${deeperData[j].accepts_new_patients}`) === true){
-            $('#list').append('This doctor is currently accepting new patients.');
-          }else{
-            $('#list').append('This doctor is NOT accepting new patients.');
-          }
 
-        }
+      }
       }
       $('#list').append(displayIt);
     }
