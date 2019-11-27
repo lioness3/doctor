@@ -28,21 +28,33 @@ $(document).ready(function(){
 
       console.log(nameResponse);
       //append
+      let nameData = nameResponse.data;
+      for (var i = 0; i < nameData.length; i++) {
+        let deeperData = nameData[i].practices;
+        for (var j = 0; j < deeperData.length; j++) {
 
-      for (var i = 0; i < nameResponse.data.length; i++) {
-        nameResponse.data[i].profile.first_name;
-        nameResponse.data[i].profile.last_name;
-        for (var j = 0; j < nameResponse.data[i].practices.length; j++) {
-          nameResponse.data[i].practices[j].phones[0].number;
-          nameResponse.data[i].practices[j].accepts_new_patients;
-          nameResponse.data[i].practices[j].website;
-          $('#list').append(`${nameResponse.data[i].practices[j].visit_address.street}
-          ${nameResponse.data[i].practices[j].visit_address.state}
-          ${nameResponse.data[i].practices[j].visit_address.zip}`);
+
+
+              $('#list').append('');
+
+              $('#list').append(`${nameData[i].profile.first_name} ${nameData[i].profile.last_name}`);
+              $('#list').append(`${deeperData[j].phones[0].number}`);
+              $('#list').append(`${deeperData[j].website}`);
+              $('#list').append(`${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city},
+                ${deeperData[j].visit_address.state}
+                ${deeperData[j].visit_address.zip}`);
+              }
+              if ((`${deeperData[j].accepts_new_patients}`) === true){
+                $('#list').append('This doctor is currently accepting new patients.');
+              }else{
+                $('#list').append('This doctor is NOT accepting new patients.');
+              }
+          
+          }
         }
       }
-  
-    }
+
+
 
 
   });
