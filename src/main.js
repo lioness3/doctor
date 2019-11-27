@@ -32,11 +32,13 @@ $(document).ready(function(){
       let nameData = nameResponse.data;
       for (var i = 0; i < nameData.length; i++) {
         displayIt+= `<li>${nameData[i].profile.first_name}   ${nameData[i].profile.last_name}</li>`
-        // displayIt.push(`${nameData[i].profile.first_name} ${nameData[i].profile.last_name}`);
-
-        let deeperData = nameData[0].practices;
+        let deeperData = nameData[i].practices;
         for (var j = 0; j < deeperData.length; j++) {
-          displayIt+= `<li>${deeperData[j].name}<li>`
+          console.log(deeperData[j].phones[0].number[0]);
+          displayIt+= `<li>${deeperData[j].phones[0].number}<li>`
+          displayIt+= `<li>${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city}${deeperData[j].visit_address.state}${deeperData[j].visit_address.zip}</li>`
+
+            
 
 
 
