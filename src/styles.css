@@ -4,3 +4,6 @@ body{
 .card{
   width: 18rem;
 }
+#list{
+  list-style-type: none;
+}

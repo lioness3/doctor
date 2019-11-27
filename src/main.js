@@ -27,41 +27,48 @@ $(document).ready(function(){
     function getPath(nameResponse) {
 
       let displayIt = [];
-      let nameData = nameResponse.data;
-      console.log(nameResponse);
+      let profile = nameResponse.data;
 
-  //searches data object for "profile"
-      for (var i = 0; i < nameData.length; i++) {
-  //adds list item containing first and last name
 
-        let deeperData = nameData[i].practices;
-  //searches data object for "practices"
-  displayIt+= `<li>${nameData[0].profile.first_name}  ${nameData[0].profile.last_name}</li>`
-        for (var j = 0; j < deeperData.length; j++) {
-          displayIt+= `<li>${deeperData[j].phones[0].number}<li>`
+//searches data object for "profile"
 
-          if ((`${deeperData[0].accepts_new_patients}`) === true){
+      for (var i = 0; i < profile.length; i++) {
+        let practices = profile[i].practices;
+
+//searches data object for "practices"
+
+        for (var j = 0; j < practices.length; j++) {
+          displayIt+= `<li>${profile[i].profile.first_name}  ${profile[i].profile.last_name}</li>`
+          displayIt+= `<li>${practices[j].phones[0].number}<li>`
+
+//searches for value of patient acceptance
+          if ((`${practices[j].accepts_new_patients}`) === true){
             displayIt += '<li>This doctor is currently accepting new patients.</li>'
           }else{
             displayIt +='<li>This doctor is NOT accepting new patients.</li>'
           }
-          displayIt+= `<li>${deeperData[j].visit_address.street}</li>`
 
-         if ((deeperData[j].visit_address.street2)!=undefined){
-           displayIt += `<li>${deeperData[j].visit_address.street2}</li>`
-         }
-           displayIt += `<li>${deeperData[j].visit_address.city},${deeperData[j].visit_address.state}</li>`
-           displayIt += `<li>${deeperData[j].visit_address.zip}</li>`
+//displays address while avoiding undefined "street2"
+          displayIt+= `<li>${practices[j].visit_address.street}</li>`
 
-  //displays message depending on acceptance of new patients
+          if ((practices[j].visit_address.street2)!=undefined){
+            displayIt += `<li>${practices[j].visit_address.street2}</li>`
+          }
 
+          displayIt += `<li>${practices[j].visit_address.city},${practices[j].visit_address.state}</li>`
+          displayIt += `<li>${practices[j].visit_address.zip}</li>`
+          displayIt += '<br>'
+        }
       }
-      }
+//appends list to the DOM
       $('#list').append(displayIt);
     }
 
 
 
-    });
+
+
+
   });
+});
 // If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
