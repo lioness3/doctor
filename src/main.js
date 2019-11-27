@@ -26,46 +26,36 @@ $(document).ready(function(){
 
     function getPath(nameResponse) {
 
-      console.log(nameResponse);
-      //append
       let displayIt = [];
       let nameData = nameResponse.data;
+  //searches data object for "profile"
       for (var i = 0; i < nameData.length; i++) {
+  //adds list item containing first and last name
         displayIt+= `<li>${nameData[i].profile.first_name}   ${nameData[i].profile.last_name}</li>`
+
         let deeperData = nameData[i].practices;
+  //searches data object for "practices"
         for (var j = 0; j < deeperData.length; j++) {
+
           console.log(deeperData[j].phones[0].number[0]);
+  //adds list item of phone number and address
           displayIt+= `<li>${deeperData[j].phones[0].number}<li>`
           displayIt+= `<li>${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city}${deeperData[j].visit_address.state}${deeperData[j].visit_address.zip}</li>`
 
-            
-
-
-
-            //look at drinkgenerator
-
-
-
-
-              // $('#list').append(`${deeperData[j].phones[0].number}`);
-              // $('#list').append(`${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city},
-              //   ${deeperData[j].visit_address.state}
-              //   ${deeperData[j].visit_address.zip}`);
-
-              // if ((`${deeperData[j].accepts_new_patients}`) === true){
-              //   $('#list').append('This doctor is currently accepting new patients.');
-              // }else{
-              //   $('#list').append('This doctor is NOT accepting new patients.');
-              // }
-
+  //displays message depending on acceptance of new patients
+          if ((`${deeperData[j].accepts_new_patients}`) === true){
+            $('#list').append('This doctor is currently accepting new patients.');
+          }else{
+            $('#list').append('This doctor is NOT accepting new patients.');
           }
+
         }
-        $('#list').append(displayIt);
       }
+      $('#list').append(displayIt);
+    }
 
 
 
-
+    });
   });
-});
 // If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
