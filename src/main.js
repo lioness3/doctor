@@ -28,30 +28,37 @@ $(document).ready(function(){
 
       console.log(nameResponse);
       //append
+      let displayIt = [];
       let nameData = nameResponse.data;
       for (var i = 0; i < nameData.length; i++) {
-        let deeperData = nameData[i].practices;
+        displayIt+= `<li>${nameData[i].profile.first_name}   ${nameData[i].profile.last_name}</li>`
+        // displayIt.push(`${nameData[i].profile.first_name} ${nameData[i].profile.last_name}`);
+
+        let deeperData = nameData[0].practices;
         for (var j = 0; j < deeperData.length; j++) {
+          displayIt+= `<li>${deeperData[j].name}<li>`
 
 
 
-              $('#list').append('');
+            //look at drinkgenerator
 
-              $('#list').append(`${nameData[i].profile.first_name} ${nameData[i].profile.last_name}`);
-              $('#list').append(`${deeperData[j].phones[0].number}`);
-              $('#list').append(`${deeperData[j].website}`);
-              $('#list').append(`${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city},
-                ${deeperData[j].visit_address.state}
-                ${deeperData[j].visit_address.zip}`);
-              }
-              if ((`${deeperData[j].accepts_new_patients}`) === true){
-                $('#list').append('This doctor is currently accepting new patients.');
-              }else{
-                $('#list').append('This doctor is NOT accepting new patients.');
-              }
-          
+
+
+
+              // $('#list').append(`${deeperData[j].phones[0].number}`);
+              // $('#list').append(`${deeperData[j].visit_address.street},${deeperData[j].visit_address.street2}<br>${deeperData[j].visit_address.city},
+              //   ${deeperData[j].visit_address.state}
+              //   ${deeperData[j].visit_address.zip}`);
+
+              // if ((`${deeperData[j].accepts_new_patients}`) === true){
+              //   $('#list').append('This doctor is currently accepting new patients.');
+              // }else{
+              //   $('#list').append('This doctor is NOT accepting new patients.');
+              // }
+
           }
         }
+        $('#list').append(displayIt);
       }
 
 
