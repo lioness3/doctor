@@ -11,7 +11,7 @@
     "debug": "node --inspect node_modules/.bin/jest --runInBand"
   },
   "keywords": [],
-  "author": "",
+  "author": "Joann Carter",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.6.4",

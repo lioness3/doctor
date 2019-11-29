@@ -8,25 +8,34 @@ import './styles.css';
 // If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)
 
 $(document).ready(function(){
+  $('#error').hide();
   $("#symptomButton").click(function(event){
     event.preventDefault;
     const userSymptom = $('#symptom').val();
     const docName = $('#name').val();
-    const range = $('#range').val();
-    $('#name').val('');
-    $('#symptom').val('');
+  $('.input').hide();
+    $('.travel').show();
+  $("#rangeButton").click(function(event){
+    event.preventDefault;
+    let range = $('#range').val();
     $('#range').val('');
-    // make button only clickable when something is enetered
 
     (async () => {
       const doctor = new DoctorName();
       const nameResponse = await doctor.getName(docName, userSymptom);
+
       getPath(nameResponse);
     })();
 
 
 
     function getPath(nameResponse) {
+      if(symptom === undefined){
+        ('#error').show();
+      }
+      if (range === undefined){
+        range = 100;
+      }
 
       let displayIt = [];
       let profile = nameResponse.data;
@@ -69,7 +78,7 @@ $(document).ready(function(){
 
 
 
-
+  });
 
   });
 });
