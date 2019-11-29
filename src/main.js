@@ -10,10 +10,12 @@ import './styles.css';
 $(document).ready(function(){
   $("#symptomButton").click(function(event){
     event.preventDefault;
-    const userSymptom = $("#symptom").val();
-    const docName = $("#name").val();
-    $("#name").val('');
-    $("#symptom").val('');
+    const userSymptom = $('#symptom').val();
+    const docName = $('#name').val();
+    const range = $('#range').val();
+    $('#name').val('');
+    $('#symptom').val('');
+    $('#range').val('');
     // make button only clickable when something is enetered
 
     (async () => {
