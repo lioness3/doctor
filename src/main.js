@@ -14,7 +14,6 @@ $(document).ready(function(){
     const docName = $('#name').val();
 
 //after click, displays range input and hides symptom input and error message
-
     $('.input').hide();
     $('#error').hide();
     $('.travel').show();
@@ -33,7 +32,6 @@ $(document).ready(function(){
     $('#range').val('');
 
 //API call
-
     (async () => {
       const doctor = new DoctorName();
       const nameResponse = await doctor.getName(docName, userSymptom,range);
@@ -42,29 +40,26 @@ $(document).ready(function(){
           $('#error').show();
           $('.input').show();
         }
-
       getPath(nameResponse);
     })();
 
-
-
     function getPath(nameResponse) {
-
       let displayIt = [];
       let profile = nameResponse.data;
 
-
 //searches data object for "profile"
-
       for (var i = 0; i < profile.length; i++) {
         let practices = profile[i].practices;
 
 //searches data object for "practices"
-
         for (var j = 0; j < practices.length; j++) {
           displayIt+= `<li>${profile[i].profile.first_name} ${profile[i].profile.last_name}</li>`
           displayIt+= `<li>${practices[j].phones[0].number}<li>`
+
+//only displays website(instead of undefined) if one is listed
+          if(practices[j].website!=undefined){
           displayIt+= `<li><a>${practices[j].website}</a><li>`
+          }
 
 //searches for value of patient acceptance
           if ((`${practices[j].accepts_new_patients}`) === true){

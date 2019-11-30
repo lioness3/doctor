@@ -1,5 +1,12 @@
 body{
-  background-color: lightgray;
+  background-color:#9464D5;
+  font-family: 'Calistoga', cursive;
+  color:black;
+  padding: 50px;
+  margin:40px,0px;
+}
+.jumbotron{
+  background-color:  #CBBBE0;
 }
 .card{
   width: 18rem;
@@ -7,6 +14,27 @@ body{
 #list{
   list-style-type: none;
 }
-.travel, #error{
+.travel{
   display: none;
+}
+#error{
+  display: none;
+  color:red;
+}
+.inputStyle{
+  border-radius: 8px;
+}
+.button{
+    border-radius: 12px;
+}
+.button:hover{
+  border-radius: 12px;
+  background-color: #2EB7AC;
+  color: black;
+}
+#showDoctor{
+  width: 300px;
+ padding: 25px;
+ margin: 25px; 
+ background-color: lightblue;
 }

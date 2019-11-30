@@ -20,7 +20,7 @@
 Create a .env file in the root directory. Save your API key in the .env file as the example shows below:
 ex: API_Key=123456789123456789
 
-OR, you may directy paste your key in the business.js file in place of ${process.env.API_KEY}.
+OR, you may directly paste your key in the business.js file in place of ${process.env.API_KEY}.
 ***************
 # _Technology Used_
 * API from https://developer.betterdoctor.com/
@@ -28,6 +28,7 @@ OR, you may directy paste your key in the business.js file in place of ${process
 * Webpack
 * MDN
 * Postman
+* Google Fonts
 * CSS
 * Bootstrap
 *******

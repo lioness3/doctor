@@ -1,41 +1,40 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-  <meta charset="utf-8">
-  <title>DOCTOR LOCATOR</title>
+  <link href="https://fonts.googleapis.com/css?family=Calistoga&display=swap" rel="stylesheet">
+  <title>SICK?</title>
 </head>
 <body>
   <div class="jumbotron">
     <form id="form">
+      <h1>Find a Doctor Today</h1>
+      <div class="travel">
+        <h3>Narrow Your Search</h3>
+        <h5>How far are you willing to travel?</h5>
+        <input class="inputStyle" id="range" type="number" placeholder="distance in miles" >
+        <button id="rangeButton" type="button" class="button">FIND A DOCTOR!</button>
+      </div>
+
+      <div class="input">
+        <h5>Search by a symptom or by a Doctor's Name:</h5>
+        <input class="inputStyle" id="symptom" type="text" placeholder="Symptom" name="input">
+        <input class="inputStyle" id="name" type="text" placeholder="Doctor's Name" name="input">
+        <button id="symptomButton" type="button" class="button">FIND A DOCTOR</button>
+      </div>
+
       <div id="error">
+        <!-- error message appears upon incorrect input -->
         <h5>You must enter a symptom to continue</h5>
       </div>
-      <div class="input">
-        <h1>SICK?</h1>
+    </div>
 
-        <h5>You may search by a symptom or by a Doctor's Name:</h5>
-        <input id="symptom" type="text" placeholder="symptom" name="input">
-        <input id="name" type="text" placeholder="Doctor's Name" name="input">
-        <button id="symptomButton" type="button">FIND A DOCTOR</button>
-      </div>
-      <div class="travel">
-        <h2>Narrow Your Search</h2>
-        <h5>How far are you willing to travel?</h5>
-        <input id="range" type="number" placeholder="distance in miles" >
-        <button id="rangeButton" type="button" name="button">FIND A DOCTOR!</button>
-
-
-
-      </div>
       <div id="showDoctor">
         <ul id= "list">
-
+          <!-- //doctor list appends here from API -->
         </ul>
       </div>
-
+  </form>
 </div>
-
-    </form>
-  </div>
 </body>
 </html>
