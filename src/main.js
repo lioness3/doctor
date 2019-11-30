@@ -13,12 +13,17 @@ $(document).ready(function(){
     const userSymptom = $('#symptom').val();
     const docName = $('#name').val();
 
+//after click, displays range input and hides symptom input and error message
+
     $('.input').hide();
     $('#error').hide();
     $('.travel').show();
+
   $("#rangeButton").click(function(event){
     event.preventDefault;
     let range = parseInt($('#range').val());
+
+//after click, inputs range of 100 miles if nothing is inputted then displays results.
     if (isNaN(range)){
       range = 100;
     }
@@ -27,11 +32,13 @@ $(document).ready(function(){
   console.log(docName);
     $('#range').val('');
 
+//API call
+
     (async () => {
       const doctor = new DoctorName();
       const nameResponse = await doctor.getName(docName, userSymptom,range);
 
-      if(this.value == ""){
+      if(error){
           $('#error').show();
           $('.input').show();
         }
@@ -57,6 +64,7 @@ $(document).ready(function(){
         for (var j = 0; j < practices.length; j++) {
           displayIt+= `<li>${profile[i].profile.first_name} ${profile[i].profile.last_name}</li>`
           displayIt+= `<li>${practices[j].phones[0].number}<li>`
+          displayIt+= `<li><a>${practices[j].website}</a><li>`
 
 //searches for value of patient acceptance
           if ((`${practices[j].accepts_new_patients}`) === true){
@@ -79,6 +87,7 @@ $(document).ready(function(){
       }
 //appends list to the DOM
       $('#list').append(displayIt);
+      $('#error').hide();
     }
 
 
