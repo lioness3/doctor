@@ -8,21 +8,33 @@ import './styles.css';
 // If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)
 
 $(document).ready(function(){
-  $('#error').hide();
   $("#symptomButton").click(function(event){
     event.preventDefault;
     const userSymptom = $('#symptom').val();
     const docName = $('#name').val();
-  $('.input').hide();
+
+    $('.input').hide();
+    $('#error').hide();
     $('.travel').show();
   $("#rangeButton").click(function(event){
     event.preventDefault;
-    let range = $('#range').val();
+    let range = parseInt($('#range').val());
+    if (isNaN(range)){
+      range = 100;
+    }
+  console.log(range);
+  console.log(userSymptom);
+  console.log(docName);
     $('#range').val('');
 
     (async () => {
       const doctor = new DoctorName();
-      const nameResponse = await doctor.getName(docName, userSymptom);
+      const nameResponse = await doctor.getName(docName, userSymptom,range);
+
+      if(this.value == ""){
+          $('#error').show();
+          $('.input').show();
+        }
 
       getPath(nameResponse);
     })();
@@ -30,12 +42,6 @@ $(document).ready(function(){
 
 
     function getPath(nameResponse) {
-      if(symptom === undefined){
-        ('#error').show();
-      }
-      if (range === undefined){
-        range = 100;
-      }
 
       let displayIt = [];
       let profile = nameResponse.data;
@@ -49,7 +55,7 @@ $(document).ready(function(){
 //searches data object for "practices"
 
         for (var j = 0; j < practices.length; j++) {
-          displayIt+= `<li>${profile[i].profile.first_name}  ${profile[i].profile.last_name}</li>`
+          displayIt+= `<li>${profile[i].profile.first_name} ${profile[i].profile.last_name}</li>`
           displayIt+= `<li>${practices[j].phones[0].number}<li>`
 
 //searches for value of patient acceptance

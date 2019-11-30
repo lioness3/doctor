@@ -7,6 +7,6 @@ body{
 #list{
   list-style-type: none;
 }
-.travel{
+.travel, #error{
   display: none;
 }
