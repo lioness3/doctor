@@ -1,12 +1,15 @@
 body{
-  background-color:#9464D5;
+  background-color:#BAC3C5;
   font-family: 'Calistoga', cursive;
-  color:black;
-  padding: 50px;
-  margin:40px,0px;
+  color:#5A587F;
+  padding: 50px,25px;
+}
+h1, h5, h3{
+  padding:10px;
 }
 .jumbotron{
-  background-color:  #CBBBE0;
+  text-align: left;
+  background-color:#F1F4D5;
 }
 .card{
   width: 18rem;
@@ -25,16 +28,22 @@ body{
   border-radius: 8px;
 }
 .button{
-    border-radius: 12px;
+  border-radius: 12px;
 }
 .button:hover{
   border-radius: 12px;
   background-color: #2EB7AC;
-  color: black;
+  color:#D5E1F4;
 }
 #showDoctor{
-  width: 300px;
- padding: 25px;
- margin: 25px; 
- background-color: lightblue;
+  display:none;
+  text-align: left;
+  width: 400px;
+  padding: 25px;
+  margin: 25px;
+  background-color: #D5F4E8;
+}
+#fullName{
+  font-size: 20px;
+  font-weight: bold;
 }

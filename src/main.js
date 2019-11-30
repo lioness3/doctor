@@ -36,9 +36,10 @@ $(document).ready(function(){
       const doctor = new DoctorName();
       const nameResponse = await doctor.getName(docName, userSymptom,range);
 
+//shows a message telling user to wait while the page is reloaded(7seconds).
       if(error){
           $('#error').show();
-          $('.input').show();
+    window.setTimeout(function(){location.reload()},9000)
         }
       getPath(nameResponse);
     })();
@@ -53,12 +54,13 @@ $(document).ready(function(){
 
 //searches data object for "practices"
         for (var j = 0; j < practices.length; j++) {
-          displayIt+= `<li>${profile[i].profile.first_name} ${profile[i].profile.last_name}</li>`
-          displayIt+= `<li>${practices[j].phones[0].number}<li>`
+//Displays full name, and callabke telephone link
+          displayIt+= `<li><span id ='fullName'>${profile[i].profile.first_name} ${profile[i].profile.last_name}</span></li>`
+          displayIt+= `<li><a href="tel:+${practices[j].phones[0].number}"> ${practices[j].phones[0].number}</a><li>`
 
-//only displays website(instead of undefined) if one is listed
+//only displays clickable website(instead of undefined) if one is listed
           if(practices[j].website!=undefined){
-          displayIt+= `<li><a>${practices[j].website}</a><li>`
+          displayIt+= `<li><a href=${practices[j].website} >${practices[j].website}</a><li>`
           }
 
 //searches for value of patient acceptance
@@ -75,14 +77,15 @@ $(document).ready(function(){
             displayIt += `<li>${practices[j].visit_address.street2}</li>`
           }
 
-          displayIt += `<li>${practices[j].visit_address.city},${practices[j].visit_address.state}</li>`
+          displayIt += `<li>${practices[j].visit_address.city}, ${practices[j].visit_address.state}</li>`
           displayIt += `<li>${practices[j].visit_address.zip}</li>`
           displayIt += '<br>'
         }
       }
 //appends list to the DOM
-      $('#list').append(displayIt);
       $('#error').hide();
+      $('#showDoctor').show();
+      $('#list').append(displayIt);
     }
 
 
